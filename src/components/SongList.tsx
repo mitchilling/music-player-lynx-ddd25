@@ -3,6 +3,8 @@ import { useAtom } from 'jotai';
 import { currentTitleAtom, managerAtom } from '../State.jsx';
 import { SongItem } from './SongItem.jsx'
 
+import './SongList.css'
+
 export const SongList = () => {
   const [, setCurrentTitle] = useAtom(currentTitleAtom);
   const [manager, ] = useAtom(managerAtom);
@@ -23,10 +25,7 @@ export const SongList = () => {
       // bug with bindsnap, let's ignore it
       // @ts-ignore
       bindsnap={handleSnap}
-      style={{
-        width: "100%",
-        height: "100vh",
-      }}
+      className='List'
     >
       {Array.from({ length: manager?.currentPositions.length ?? 0 }).map((item, index) => {
         return (

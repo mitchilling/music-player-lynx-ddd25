@@ -1,0 +1,14 @@
+.ProgressBarView {
+  width: 100%;
+  height: 5vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Bar {
+  width: 90%;
+  height: 2px;
+  background: lightgrey;
+  margin-bottom: 10px;
+}

@@ -1,12 +1,14 @@
 import { useAtom } from 'jotai';
 import { currentTitleAtom } from '../State.jsx';
 
+import './InfoBox.css'
+
 export const InfoBox = () => {
   const [currentTitle, ] = useAtom(currentTitleAtom);
 
   return (
-    <view style={{ width: "100%", height: "10vh", display: "flex" }}>
-      <text style={{ marginLeft: "20px" }}>
+    <view className="InfoBoxView">
+      <text className='Title'>
         {`${currentTitle ? currentTitle : "Empty Playlist"}`}
       </text>
     </view>
