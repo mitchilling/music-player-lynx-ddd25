@@ -1,13 +1,19 @@
 import { useAtom } from 'jotai';
-import { currentIsLikedAtom, managerAtom } from '../State.jsx';
+import { currentIsLikedAtom, isPlayingAtom, managerAtom } from '../State.jsx';
 
 export const ActionBar = () => {
   const [currentIsLiked, setCurrentIsLiked] = useAtom(currentIsLikedAtom);
+  const [isPlaying, setIsPlaying] = useAtom(isPlayingAtom);
   const [manager,] = useAtom(managerAtom);
 
   const toggleLike = () => {
     const liked = manager?.toggleLike();
     setCurrentIsLiked(liked ?? false);
+  };
+
+  const togglePauseResume = () => {
+    manager?.togglePauseResume();
+    setIsPlaying(manager?.isPlaying ?? false);
   };
 
   return (
@@ -19,7 +25,7 @@ export const ActionBar = () => {
       }}
     >
       <text bindtap={toggleLike}>{currentIsLiked ? 'Liked' : 'Like'}</text>
-      <text>Play</text>
+      <text bindtap={togglePauseResume}>{isPlaying ? 'Pause' : 'Play'}</text>
       <text>Share</text>
     </view>
   );
