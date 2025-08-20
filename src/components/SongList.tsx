@@ -1,12 +1,13 @@
 import type { ListSnapEvent } from '@lynx-js/types';
 import { useAtom } from 'jotai';
-import { currentTitleAtom, managerAtom } from '../State.jsx';
+import { currentIsLikedAtom, currentTitleAtom, managerAtom } from '../State.jsx';
 import { SongItem } from './SongItem.jsx'
 
 import './SongList.css'
 
 export const SongList = () => {
   const [, setCurrentTitle] = useAtom(currentTitleAtom);
+  const [, setCurrentIsLiked] = useAtom(currentIsLikedAtom);
   const [manager, ] = useAtom(managerAtom);
 
   // triggered when the finger leaves the screen after a swipe
@@ -14,7 +15,9 @@ export const SongList = () => {
     manager?.switchTo(e.detail.position);
 
     setCurrentTitle(manager?.currentSong?.title ?? null);
+    setCurrentIsLiked(manager?.currentSong?.isLiked ?? false);
   };
+
   return (
     <list
       scroll-orientation="vertical"
