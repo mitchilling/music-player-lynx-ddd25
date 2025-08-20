@@ -25,18 +25,18 @@ export const ActionBar = () => {
 
   return (
     <view className='ActionBarView'>
-      <view bindtap={toggleLike}>
+      <view bindtap={toggleLike} className='TapArea'>
         {currentIsLiked
           ? <image src={heartFull} className='HeartIcon' />
           : <image src={heartEmpty} className='HeartIcon' />}
       </view>
-      <view bindtap={togglePauseResume}>
+      <view bindtap={togglePauseResume} className='TapArea'>
         {isPlaying
           ? <image src={pauseIcon} className='PlayIcon' />
           : <image src={playIcon} className='PlayIcon' />}
       </view>
       {/* not implemented yet */}
-      <view>
+      <view className='TapArea'>
         <image src={shareIcon} className='ShareIcon' />
       </view>
     </view>
