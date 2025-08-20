@@ -17,7 +17,7 @@ export const SongItem = (props: SongItemProps) => {
 
   return (
     <view className="SongItem">
-      <VinylRecord name={`song-${props.index}`} />
+      <VinylRecord />
       <InfoBox />
       {/* only mount progress bar when index is correct, to reduce timer cost */}
       {currentIndex === props.index && (
