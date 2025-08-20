@@ -10,6 +10,8 @@ export const currentIndexAtom = atom(0);
 
 export const currentTitleAtom = atom<string | null>(null);
 
+export const currentCoverImageAtom = atom<string | null>(null);
+
 export const currentPositionAtom = atom(0);
 
 export const currentDurationAtom = atom(0);
