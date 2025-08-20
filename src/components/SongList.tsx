@@ -1,12 +1,23 @@
 import type { ListSnapEvent } from '@lynx-js/types';
 import { useAtom } from 'jotai';
-import { currentIsLikedAtom, currentTitleAtom, managerAtom } from '../State.jsx';
+
+import {
+  currentDurationAtom,
+  currentIndexAtom,
+  currentIsLikedAtom,
+  currentPositionAtom,
+  currentTitleAtom,
+  managerAtom
+} from '../State.jsx';
 import { SongItem } from './SongItem.jsx'
 
 import './SongList.css'
 
 export const SongList = () => {
+  const [, setCurrentIndex] = useAtom(currentIndexAtom);
   const [, setCurrentTitle] = useAtom(currentTitleAtom);
+  const [, setCurrentPosition] = useAtom(currentPositionAtom);
+  const [, setCurrentDuration] = useAtom(currentDurationAtom);
   const [, setCurrentIsLiked] = useAtom(currentIsLikedAtom);
   const [manager, ] = useAtom(managerAtom);
 
@@ -14,7 +25,13 @@ export const SongList = () => {
   const handleSnap = (e: ListSnapEvent) => {
     manager?.switchTo(e.detail.position);
 
+    // These should be called in listener to events emitted by PlaybackManager
+    // to decouple state management from UI components.
+    // Let's just mock it for now.
+    setCurrentIndex(e.detail.position);
     setCurrentTitle(manager?.currentSong?.title ?? null);
+    setCurrentPosition(manager?.currentPositions[e.detail.position] ?? 0);
+    setCurrentDuration(manager?.currentSong?.duration ?? 0);
     setCurrentIsLiked(manager?.currentSong?.isLiked ?? false);
   };
 

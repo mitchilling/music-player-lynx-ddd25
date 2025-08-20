@@ -1,7 +1,7 @@
 import { useEffect, useMemo } from '@lynx-js/react'
 import { useAtom } from 'jotai';
 
-import { currentTitleAtom, managerAtom } from './State.jsx';
+import { currentDurationAtom, currentTitleAtom, managerAtom } from './State.jsx';
 import { PlaybackManager } from './model/PlaybackManager.jsx';
 import { SongList } from './components/SongList.jsx'
 
@@ -14,6 +14,7 @@ import EmbracingSong from './assets/demos/Embracing-this-World.mp3'
 
 export function App() {
   const [, setCurrentTitle] = useAtom(currentTitleAtom);
+  const [, setCurrentDuration] = useAtom(currentDurationAtom);
   const [, setManager] = useAtom(managerAtom);
 
   const instance = useMemo(() => {
@@ -45,6 +46,7 @@ export function App() {
   useEffect(() => {
     setManager(instance);
     setCurrentTitle(instance.currentSong?.title ?? null);
+    setCurrentDuration(instance.currentSong?.duration ?? 0);
   }, [instance]);
 
   return (

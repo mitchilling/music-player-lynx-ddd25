@@ -6,9 +6,32 @@
   align-items: center;
 }
 
-.Bar {
+.BarBack {
   width: 90%;
   height: 2px;
   background: lightgrey;
   margin-bottom: 10px;
+}
+
+.BarFront {
+  width: 0%;
+  height: 2px;
+  background: #808080;
+}
+
+.TimeView {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.TimeTextLeft {
+  margin-left: 8px;
+  color: var(--color-text);
+}
+
+.TimeTextRight {
+  margin-right: 8px;
+  color: var(--color-text);
 }
