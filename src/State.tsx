@@ -6,4 +6,6 @@ export const isPlayingAtom = atom(false);
 
 export const managerAtom = atom<PlaybackManager | null>(null);
 
+export const currentTitleAtom = atom<string | null>(null);
+
 export const currentIsLikedAtom = atom(false);

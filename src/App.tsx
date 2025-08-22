@@ -1,7 +1,7 @@
 import { useEffect, useMemo } from '@lynx-js/react'
 import { useAtom } from 'jotai';
 
-import { managerAtom } from './State.jsx';
+import { currentTitleAtom, managerAtom } from './State.jsx';
 import { PlaybackManager } from './model/PlaybackManager.jsx';
 import { SongList } from './components/SongList.jsx'
 
@@ -13,6 +13,7 @@ import ChristmasImage from './assets/demos/We_Wish_You_a_Merry_Christmas.jpg'
 import EmbracingSong from './assets/demos/Embracing-this-World.mp3'
 
 export function App() {
+  const [, setCurrentTitle] = useAtom(currentTitleAtom);
   const [, setManager] = useAtom(managerAtom);
 
   const instance = useMemo(() => {
@@ -43,6 +44,7 @@ export function App() {
 
   useEffect(() => {
     setManager(instance);
+    setCurrentTitle(instance.currentSong?.title ?? null);
   }, [instance]);
 
   return (

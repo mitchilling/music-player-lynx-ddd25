@@ -1,6 +1,10 @@
+import { useAtom } from 'jotai';
+import { managerAtom } from '../State.jsx';
 import { SongItem } from './SongItem.jsx'
 
 export const SongList = () => {
+  const [manager, ] = useAtom(managerAtom);
+
   return (
     <list
       scroll-orientation="vertical"
@@ -13,7 +17,7 @@ export const SongList = () => {
         height: "100vh",
       }}
     >
-      {Array.from({ length: 3 }).map((item, index) => {
+      {Array.from({ length: manager?.currentPositions.length ?? 0 }).map((item, index) => {
         return (
           <list-item
             item-key={`list-item-${index}`}
